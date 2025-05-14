@@ -1,0 +1,289 @@
+{
+  "pages": [
+    {
+      "name": "Dashboard",
+      "icon": "bx-home-circle",
+      "url": "/dashboard/"
+    },
+    {
+      "name": "Item Master - Dashboard",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/dashboard"
+    },
+    {
+      "name": "Item Master - Products/Items",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/list"
+    },
+    {
+      "name": "Item Master - Add Products/Items",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/create"
+    },
+    {
+      "name": "Item Master - Semi-finish To Finish Products",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/stof_products/lists/"
+    },
+    {
+      "name": "Item Master - Products Category List",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/product-category"
+    },
+    {
+      "name": "Item Master - Products Quality List",
+      "icon": "fa-brands fa-product-hunt",
+      "url": "/products/product-quality/"
+    },
+    {
+      "name": "Bill of Material - Add BOM",
+      "icon": "fa-solid fa-money-bill",
+      "url": "/products/create-bom/"
+    },
+    {
+      "name": "Bill of Material - List",
+      "icon": "fa-solid fa-money-bill",
+      "url": "/products/bom-list/"
+    },
+    {
+      "name": "Bill of Material - NPD Bill of Materials",
+      "icon": "fa-solid fa-money-bill",
+      "url": "/products/npd-bom-list/"
+    },
+    {
+      "name": "Inward - Dashboard",
+      "icon": "fa-solid fa-inbox",
+      "url": "/inward/dashboard/"
+    },
+    {
+      "name": "Inward - Pending PO",
+      "icon": "fa-solid fa-inbox",
+      "url": "/inward/po-list/"
+    },
+    {
+      "name": "Inward - Inward List",
+      "icon": "fa-solid fa-inbox",
+      "url": "/inward/list/"
+    },
+    {
+      "name": "Inward - New Inward",
+      "icon": "fa-solid fa-inbox",
+      "url": "/inward/new-inward/"
+    },
+    {
+      "name": "Inward - Excess quantity",
+      "icon": "fa-solid fa-inbox",
+      "url": "/inward/excess-list/"
+    },
+    {
+      "name": "Purchase Master - Dashboard",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/dashboard/"
+    },
+    {
+      "name": "Purchase Master - MRP",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/mrp/"
+    },
+    {
+      "name": "Purchase Master - MRP Logs",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/old-mrp/"
+    },
+    {
+      "name": "Purchase Master - Purchase Orders List",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/list/"
+    },
+    {
+      "name": "Purchase Master - Add Purchase Orders",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/create-po/"
+    },
+    {
+      "name": "Purchase Master - Excess Inward List",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/excess-po/"
+    },
+    {
+      "name": "Purchase Master - Overdue PO",
+      "icon": "fa-solid fa-inbox",
+      "url": "/purchase/overdue-po/"
+    },
+    {
+      "name": "Inventory - Dashboard",
+      "icon": "fa-solid fa-warehouse",
+      "url": "/inventry/dashboard"
+    },
+    {
+      "name": "Inventory - Stock Transaction",
+      "icon": "fa-solid fa-warehouse",
+      "url": "/inventry/add-stock/"
+    },
+    {
+      "name": "Inventory - Stock Histories",
+      "icon": "fa-solid fa-warehouse",
+      "url": "/inventry/stock-history/"
+    },
+    {
+      "name": "Inventory - Stock Reports",
+      "icon": "fa-solid fa-warehouse",
+      "url": "/inventry/reports/"
+    }, 
+    {
+      "name": "Vendor Master - Dashboard",
+      "icon": "fa-solid fa-shop",
+      "url": "/vendors/dashboard"
+    },
+    {
+      "name": "Vendor Master - All Vendors",
+      "icon": "fa-solid fa-shop",
+      "url": "/vendors/list/"
+    },
+    {
+      "name": "Vendor Master - Add Vendor",
+      "icon": "fa-solid fa-shop",
+      "url": "/vendors/create/"
+    },
+    {
+      "name": "Vendor Master - Categories",
+      "icon": "fa-solid fa-shop",
+      "url": "/vendors/vendor-category"
+    },
+    {
+      "name": "Employees - Dashboard",
+      "icon": "fas fa-users",
+      "url": "/employees/dashboard/"
+    },
+    {
+      "name": "Employees - Create",
+      "icon": "fas fa-users",
+      "url": "/employees/create/"
+    },
+    {
+      "name": "Employees - List",
+      "icon": "fas fa-users",
+      "url": "/employees/list/"
+    },
+    {
+      "name": "Employees - Task List",
+      "icon": "fas fa-users",
+      "url": "/users/tasked-user-list/"
+    },
+    {
+      "name": "Production Master - Dashboard",
+      "icon": "fa-solid fa-industry",
+      "url": "/purchase/dashboard/"
+    },
+    {
+      "name": "Production Master - Production Planning",
+      "icon": "fa-solid fa-industry",
+      "url": "/production/planning/"
+    },
+    {
+      "name": "Production Master - Work Order",
+      "icon": "fa-solid fa-industry",
+      "url": "/production/work_order/"
+    },
+    {
+      "name": "Customers - Dashboard",
+      "icon": "fa-solid fa-person-military-pointing",
+      "url": "/customers/dashboard"
+    },
+    {
+      "name": "Customers - List",
+      "icon": "fa-solid fa-person-military-pointing",
+      "url": "/customers/list"
+    },
+    {
+      "name": "Customers - Add",
+      "icon": "fa-solid fa-person-military-pointing",
+      "url": "/customers/create-customer"
+    },
+    {
+      "name": "OutSide Process - Dashboard",
+      "icon": "fa-solid fa-outdent",
+      "url": "/purchase/out-side/dashboard/"
+    },
+    {
+      "name": "OutSide Process - List",
+      "icon": "fa-solid fa-outdent",
+      "url": "/purchase/out-side/list/"
+    },
+    {
+      "name": "OutSide Process - Create",
+      "icon": "fa-solid fa-outdent",
+      "url": "/purchase/out-side/create/"
+    },
+    {
+      "name": "Orders - Dashboard",
+      "icon": "fa-solid fa-clipboard",
+      "url": "/orders/dashboard"
+    },
+    {
+      "name": "Orders - List",
+      "icon": "fa-solid fa-clipboard",
+      "url": "/orders/orders-list"
+    },
+    {
+      "name": "Orders - Pending LR",
+      "icon": "fa-solid fa-warehouse",
+      "url": "fa-solid fa-clipboard"
+    },
+    {
+      "name": "Orders - Reports",
+      "icon": "fa-solid fa-clipboard",
+      "url": "/orders/report/"
+    },
+    {
+      "name": "Quality Check - List",
+      "icon": "fa-solid fa-list-check",
+      "url": "/inward/qc-check-list/"
+    },
+    {
+      "name": "WareHouse - Finished Goods List",
+      "icon": "fa-solid fa-boxes-stacked",
+      "url": "/products/finished-goods/"
+    },
+    {
+      "name": "WareHouse - Add Finished Goods",
+      "icon": "fa-solid fa-boxes-stacked",
+      "url": "/products/finished-goods/"
+    },
+    {
+      "name": "WareHouse - Planning Sheet",
+      "icon": "fa-solid fa-boxes-stacked",
+      "url": "/products/planning-sheet/"
+    },
+    {
+      "name": "Logistics - DHL Airwaybill Form",
+      "icon": "fa-solid fa-truck-fast",
+      "url": "/logistics/dhl_csbv_form/"
+    },
+    {
+      "name": "Logistics - Standard Packaging",
+      "icon": "fa-solid fa-truck-fast",
+      "url": "/logistics/std_packaging/"
+    },
+    {
+      "name": "Users - Dashboard",
+      "icon": "fa-solid fa-user",
+      "url": "/users/dashboard/"
+    },
+    {
+      "name": "Users - Create User",
+      "icon": "fa-solid fa-user",
+      "url": "/users/create/"
+    },
+    {
+      "name": "Users - Users List",
+      "icon": "fa-solid fa-user",
+      "url": "/users/list/"
+    },
+    {
+      "name": "Inquiries - List",
+      "icon": "fa-solid fa-headset",
+      "url": "/inquiries/inquiry-list/"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+
+
+<div class="col mr-auto">
+    <nav aria-label="..." class="float-right">
+        <ul class="pagination pagination-rounded justify-content-end pagination-outline-primary">
+            {% if items.has_previous %}
+            <li class="page-item ">
+                <a class=" page-link pagination-action" href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+            </li>
+            <li class="page-item ">
+                <a class="page-link pagination-action" href="?page={{ items.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}">
+                    <i class="bx bx-chevron-left bx-sm"></i>
+                </a>
+            </li>
+            {% endif %}
+            {% for num in items.paginator.page_range %}
+            {% if items.number == num %}
+            <li class="page-item active"><a class="page-link" href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}">{{ num }}</a></li>
+            {% elif num > items.number|add:'-2' and num < items.number|add:'2' %} <li class="page-item"><a
+                    class="page-link" href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}">{{ num }}<span class="sr-only">(current)</span></a></li>
+                {% endif %}
+                {% endfor %}
+                {% if items.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ items.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}"><i class="bx bx-chevron-right bx-sm"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ items.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.status %}&status={{request.GET.status}}{% endif %}{% if request.GET.category %}&category={{ request.GET.category}}{% endif %}{% if request.GET.quality %}&quality={{ request.GET.quality}}{% endif %}">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endif %}
+        </ul>
+    </nav>
+</div>

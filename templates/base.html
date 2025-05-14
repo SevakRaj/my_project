@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
+  data-theme="theme-default" data-assets-path="{% static 'assets/' %}" data-template="vertical-menu-template" data-style="light">
+  <!-- Loader Container -->
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Shop Basuri | {% block title %} {% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/logoB.ico' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+    {% include 'base/css.html' %}
+    <style>
+    {% block css %}
+    {% endblock css %}
+    </style>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  </head>
+  <div id="loader-container">
+
+    <div>
+    <dotlottie-player
+        src="https://lottie.host/7bbc8236-9a86-46b1-93d8-ee46dd18f173/MakegA8QMU.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 20%; height: 20%; justify-self: center;"
+        loop
+        autoplay>
+    </dotlottie-player>
+    <div id="loading-text" style="justify-self: center; margin-top: -40px;" class="text-primary h5 user-select-none " >Loading...</div>
+  </div>
+</div>
+  <body>
+     
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        {% include 'base/left-navbar.html' %}
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- / Navbar -->
+          {% include "base/header.html" %}
+          <!-- / Navbar -->
+          
+          <div class="content-wrapper">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="page-breadcrumb mt-5">
+              <div class="row">
+                  <div class="col-7 align-self-center">
+                      <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">
+                          {% block head %}{% endblock %}</h3>
+                          
+                      <div class="d-flex align-items-center">
+                          <nav aria-label="breadcrumb">
+                            
+                            
+                            <ol class="breadcrumb mt-3 p-0">
+                                {% block previous_pages %}
+                                <li class="breadcrumb-item"><a href="{% url 'base:dashboard' %}">Dashboard</a>
+                                </li>
+                                {% endblock previous_pages %}
+                                  {% block next_page %}
+                                  {% endblock %}
+                              </ol>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              {% block content %}
+              {% endblock content %}
+          </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+
+
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
+
+    </div>
+    <!-- / Layout wrapper -->
+
+    {% include "base/js.html" %}
+    {% block js %}
+    {% endblock js %}  
+    <script>
+      // Show loader until the content is fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+          const loader = document.getElementById('loader-container');
+          const content = document.getElementById('content');
+
+          // Simulate loading time or wait for Django content to be ready
+          setTimeout(() => {
+              loader.classList.add('hidden'); // Hide the loader
+              content.style.display = 'block'; // Show the content
+          }, 500); // Adjust timing as needed
+      });
+
+
+    
+  </script>
+
+  </body>
+</html>

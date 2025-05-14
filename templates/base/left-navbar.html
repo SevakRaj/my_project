@@ -1,0 +1,547 @@
+{% load static %}
+{% load user_extras %}
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+
+  <div class="app-brand demo ">
+    <a href="javascript:void(0);" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <img src="{% static 'images/logo.svg' %}" width="25px" height="30px">
+      </span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">Basuri</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+      <i class="bx bx-chevron-left bx-sm d-flex align-items-center justify-content-center"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+
+    <li class="menu-item " id = "dashboard">
+      <a href="{% url 'base:dashboard' %}" class="menu-link ">
+        <i class="menu-icon tf-icons fa-solid fa-home"></i>
+        <div data-i18n="Dashboard">Dashboard</div>
+      </a>
+    </li>
+    {% if request.user|user_belongs_to_group:"STORE" or user.is_superuser %}
+    <li class="menu-item " id = "product-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class=" menu-icon tf-icons fa-brands fa-product-hunt"></i>
+        <div data-i18n="Item Master">Item Master</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="product-dashboard">
+          <a href="{% url 'products:products-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="sub-all-product">
+          <a href="{% url 'products:products-list' %}" class="menu-link">
+            <div data-i18n="All Products">All Products</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "add-product">
+          <a href="{% url 'products:products-create' %}" class="menu-link">
+            <div data-i18n="Add Products">Add Products</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "stof_products">
+          <a href="{% url 'products:stof_products' %}" class="menu-link">
+            <div data-i18n="S To F Products">S To F Products</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "product-category">
+          <a href="{% url 'products:product-category' %}" class="menu-link">
+            <div data-i18n="Categories">Categories</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "product-quality">
+          <a href="{% url 'products:product-quality' %}" class="menu-link">
+            <div data-i18n="Quality">Quality</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"DESIGN DEVELOPMENT" or user.is_superuser %}
+    <li class="menu-item " id = "bom">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-money-bill"></i>
+        <div data-i18n="Bill of Materials">Bill of Materials</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id = "add-bom">
+          <a href="{% url 'products:bom-create' %}" class="menu-link">
+            <div data-i18n="Add BOM">Add BOM</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "product-bom">
+          <a href="{% url 'products:bom-list' %}" class="menu-link">
+            <div data-i18n="Bill of Materials">Bill of Materials</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "npd-bom">
+          <a href="{% url 'products:NPD-bom-list' %}" class="menu-link">
+            <div data-i18n="NPD Bill of Materials">NPD Bill of Materials</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+
+    {% comment %} -----------------------------------inward----------------------------------- {% endcomment %}
+
+
+
+    {% if request.user|user_belongs_to_group:"INWARD OUTWORD" or user.is_superuser %}
+    <li class="menu-item " id = "inward-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-inbox"></i>
+        <div data-i18n="Inward">Inward</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="inward-dashboard">
+          <a href="{% url 'inward:inward-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "pending-po">
+          <a href="{% url 'inward:pending-po' %}" class="menu-link">
+            <div data-i18n="Pending PO">Pending PO</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "list-inward">
+          <a href="{% url 'inward:list' %}" class="menu-link">
+            <div data-i18n="Inward List">Inward List</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "new-inward">
+          <a href="{% url 'inward:new-inward' %}" class="menu-link">
+            <div data-i18n="New Inward">New Inward</div>
+          </a>
+        </li>
+        <li class="menu-item" id="Excess-Inward">
+          <a href="{% url 'inward:excess-list' %}" class="menu-link">
+            <div data-i18n="Excess quantity">Excess Quantity</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"PURCHASE" or user.is_superuser %}
+    <li class="menu-item " id = "purchase-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-cart-shopping"></i>
+        <div data-i18n="Purchase Master">Purchase Master</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="purchase-dashboard">
+          <a href="{% url 'purchase:purchase-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="purchase-mrp">
+          <a href="{% url 'purchase:purchase-mrp' %}" class="menu-link">
+            <div data-i18n="MRP">MRP</div>
+          </a>
+        </li>
+        <li class="menu-item" id="old-mrp">
+          <a href="{% url 'purchase:old-mrp' %}" class="menu-link">
+            <div data-i18n="MRP Logs">MRP Logs</div>
+          </a>
+        </li>
+        <li class="menu-item" id="purchase-order">
+          <a href="{% url 'purchase:purchase-order-list' %}" class="menu-link">
+            <div data-i18n="Purchase Orders">Purchase Orders</div>
+          </a>
+        </li>
+        <li class="menu-item" id="purchase-order-create">
+          <a href="{% url 'purchase:purchase-order' %}" class="menu-link">
+            <div data-i18n="Add">Add</div>
+          </a>
+        </li>
+        <li class="menu-item" id="purchase-excess-inward">
+          <a href="{% url 'purchase:excess-po' %}" class="menu-link">
+            <div data-i18n="Excess Inward">Excess Inward</div>
+          </a>
+        </li>
+        <li class="menu-item" id="Overdue-Po-purchase">
+          <a href="{% url 'purchase:overdue-po' %}" class="menu-link">
+            <div data-i18n="Overdue POs">Overdue POs</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"STORE" or user.is_superuser %}
+    <li class="menu-item " id = "inventory-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-warehouse"></i>
+        <div data-i18n="Inventory">Inventory</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item" id="inventry-dashboard">
+          <a href="{% url 'inventry:inventry-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="add-stock">
+          <a href="{% url 'inventry:add-stock' %}" class="menu-link">
+            <div data-i18n="Stock Transection">Stock Transection</div>
+          </a>
+        </li>
+        <li class="menu-item" id="stock-histories">
+          <a href="{% url 'inventry:stock-histories' %}" class="menu-link">
+            <div data-i18n="Stock Histories">Stock Histories</div>
+          </a>
+        </li>
+        <li class="menu-item" id="stock-report">
+          <a href="{% url 'inventry:stock-report' %}" class="menu-link">
+            <div data-i18n="Reports">Reports</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"PURCHASE" or user.is_superuser or request.user|user_belongs_to_group:"ACCOUNT" %}
+    <li class="menu-item " id = "vendor-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-shop"> </i>
+        <div data-i18n="Vendor Master"> Vendor Master</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="vendor-dashboard">
+          <a href="{% url 'vendors:vendor-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="sub-all-vendor">
+          <a href="{% url 'vendors:vendor-list' %}" class="menu-link">
+            <div data-i18n="All Vendors">All Vendors</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "add-vendor">
+          <a href="{% url 'vendors:vendor-create' %}" class="menu-link">
+            <div data-i18n="Add Vendor">Add Vendor</div>
+          </a>
+        </li>
+        <li class="menu-item" id = "vendor-categories">
+          <a href="{% url 'vendors:vendor-category' %}" class="menu-link">
+            <div data-i18n="Categories">Categories</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+    
+    {% if request.user|user_belongs_to_group:"HR" or user.is_superuser %}
+    <li class="menu-item " id = "employee-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fas fa-users"></i>
+        <div data-i18n="Employees">Employees</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item" id="employee-dashboard">
+          <a href="{% url 'employees:dashboard-employee' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="create-employee">
+          <a href="{% url 'employees:create-employee' %}" class="menu-link">
+            <div data-i18n="Create">Create</div>
+          </a>
+        </li>
+        <li class="menu-item" id="employee-list">
+          <a href="{% url 'employees:employee-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+        <li class="menu-item" id="users-list">
+          <a href="{% url 'users:users-list-task' %}" class="menu-link">
+            <div data-i18n="Employee Of Task List">Employee Of Task List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"PRODUCTION" or user.is_superuser %}
+    <li class="menu-item " id = "production-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-industry"></i>
+        <div data-i18n="Production Master">Production Master</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="purchase-dashboard">
+          <a href="{% url 'purchase:purchase-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="production-planning">
+          <a href="{% url 'production:production-planning' %}" class="menu-link">
+            <div data-i18n="Production Planning">Production Planning</div>
+          </a>
+        </li>
+        <li class="menu-item" id="workorder_detail">
+          <a href="{% url 'production:work-order' %}" class="menu-link">
+            <div data-i18n="Work Order">Work Order</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+    
+    {% if request.user|user_belongs_to_group:"ACCOUNT" or user.is_superuser or request.user|user_belongs_to_group:"SALES" %}
+    <li class="menu-item " id = "customers-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons  fa-solid fa-person-military-pointing"></i>
+        <div data-i18n="Customers">Customers</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item" id="customer-dashboard">
+          <a href="{% url 'customers:dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="customers-dashboard">
+          <a href="{% url 'customers:customer-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+        <li class="menu-item" id="customers-create">
+          <a href="{% url 'customers:create-customer' %}" class="menu-link">
+            <div data-i18n="Add">Add</div>
+          </a>
+        </li>
+        {% if request.user|user_belongs_to_group:"ACCOUNT" or user.is_superuser %}
+        <li class="menu-item" id="invoice-settings">
+          <a href="{% url 'invoice:dashboard' %}" class="menu-link">
+            <div data-i18n="Settings">Settings</div>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"INWARD OUTWORD" or user.is_superuser or request.user|user_belongs_to_group:"SALES" %}
+    <li class="menu-item " id = "out-side-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-outdent"></i>
+        <div data-i18n="Out Side Process">Out Side Process</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="outside-dashboard">
+          <a href="{% url 'purchase:outside-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="outside-list">
+          <a href="{% url 'purchase:outside-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+        <li class="menu-item" id="outside-create">
+          <a href="{% url 'purchase:outside-create' %}" class="menu-link">
+            <div data-i18n="Create">Create</div>
+          </a>
+        </li>
+      </ul>
+      
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"ACCOUNT" or user.is_superuser or request.user|user_belongs_to_group:"SALES" %}
+    <li class="menu-item " id = "orders-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-clipboard"></i>
+        <div data-i18n="Orders">Orders</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item" id="orders-dashboard">
+          <a href="{% url 'orders:orders-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="orders-list">
+          <a href="{% url 'orders:orders-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+
+        <li class="menu-item" id="orders-of-lr-list">
+          <a href="{% url 'orders:pending-lr-details' %}" class="menu-link">
+            <div data-i18n="Pending LR">Pending LR</div>
+          </a>
+        </li>
+                  
+        <li class="menu-item" id="order-report">
+          <a href="{% url 'orders:orders-report' %}" class="menu-link">
+            <div data-i18n="Reports">Reports</div>
+          </a>
+        </li>
+        {% if request.user|user_belongs_to_group:"ACCOUNT" or user.is_superuser %}
+        <li class="menu-item" id="invoice-settings">
+          <a href="{% url 'invoice:dashboard' %}" class="menu-link">
+            <div data-i18n="Settings">Settings</div>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"QC" or user.is_superuser %}
+    <li class="menu-item " id = "qc-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-list-check"></i>
+        <div data-i18n="QC">QC</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="qc-list">
+          <a href="{% url 'inward:qc-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"PRODUCTION" or user.is_superuser %}
+    {% comment %} -------------------------warehouse---------------<i class="fa-solid fa-warehouse"></i>----- {% endcomment %}
+    <li class="menu-item " id = "ware-house">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-boxes-stacked"></i>
+        <div data-i18n="WareHouse">WareHouse</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="finished">
+          <a href="{% url 'products:finished-goods' %}" class="menu-link">
+            <div data-i18n="Finished Goods">Finished Goods</div>
+          </a>
+        </li>
+        <li class="menu-item" id="add-finished-stock">
+          <a href="{% url 'products:finished-goods' %}" class="menu-link">
+            <div data-i18n="Add Finished Goods">ADD Finished Goods</div>
+          </a>
+        </li>
+        <li class="menu-item" id="finished">
+          <a href="{% url 'products:planning-sheet' %}" class="menu-link" target="_blank">
+            <div data-i18n="Planning Sheet">Planning Sheet</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"LOGISTICS" or user.is_superuser %}
+    {% comment %} -------------------------Logistics---------------<i class="fa-solid fa-warehouse"></i>----- {% endcomment %}
+    <li class="menu-item " id = "Logistics">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-truck-fast"></i>
+        <div data-i18n="Logistics">Logistics</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="DHL-Airwaybill-Form">
+          <a href="{% url 'logistics:dhl_csbv_form' %}" class="menu-link">
+            <div data-i18n="DHL Airwaybill Form">DHL Airwaybill Form</div>
+          </a>
+        </li>
+        <li class="menu-item" id="std_packaging">
+          <a href="{% url 'logistics:std_packaging' %}" class="menu-link">
+            <div data-i18n="Standard Packaging">Standard Packaging</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"MD" or user.is_superuser %}
+    <li class="menu-item " id = "user-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-user"></i>
+        <div data-i18n="Users">Users</div>
+      </a>
+
+      <ul class="menu-sub">
+
+        <li class="menu-item" id="users-dashboard">
+          <a href="{% url 'users:users-dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="create-user">
+          <a href="{% url 'users:create-user' %}" class="menu-link">
+            <div data-i18n="Create User">Create User</div>
+          </a>
+        </li>
+        <li class="menu-item" id="users-list">
+          <a href="{% url 'users:users-list' %}" class="menu-link">
+            <div data-i18n="Users List">Users List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if request.user|user_belongs_to_group:"SALES" or user.is_superuser %}
+    <li class="menu-item " id = "inquiries-menu">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-headset"></i>
+        <div data-i18n="Inquiries">Inquiries</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item" id="inquiries-dashboard">
+          <a href="{% url 'inquiries:dashboard' %}" class="menu-link">
+            <div data-i18n="Dashboard">Dashboard</div>
+          </a>
+        </li>
+        <li class="menu-item" id="inquiries-list">
+          <a href="{% url 'inquiries:inquiry-list' %}" class="menu-link">
+            <div data-i18n="List">List</div>
+          </a>
+        </li>
+       
+      </ul>
+    </li>
+    {% endif %}
+    <li class="menu-item " id = "settings">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons fa-solid fa-gear"></i>
+        <div data-i18n="Settings"> Settings</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item" id="change-pass">
+          <a href="{% url 'base:change-password' %}" class="menu-link">
+            <div data-i18n="Change Password">Change Password</div>
+          </a>
+        </li>
+        <li class="menu-item" id="vendor-dashboard">
+          <a href="{% url 'base:logout' %}" class="menu-link">
+            <div data-i18n="Log Out">Log Out</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+ 
+
+
+</aside>
+<!-- / Menu -->
