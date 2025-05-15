@@ -1,284 +1,213 @@
 {% load static %}
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{% static 'assets/' %}/"
-  data-template="vertical-menu-template-free"
->
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
-
-    <meta name="description" content="" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Mighty Hands!</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/logoB.ico' %}" />
+    <link rel="icon" href="{% static 'assets/img/mighty.png' %}" type="image/x-icon" />
 
-    {% include 'base/css.html' %}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Helpers -->
-    <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{% static 'assets/js/config.js' %}"></script>
+    <!-- Country Code CSS -->
     <link rel="stylesheet" href="{% static 'assets/extra-libs/countrycode/css/intlTelInput.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/extra-libs/countrycode/css/demo.css'%}">
+
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #fff;
+      }
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(255, 165, 0, 0.2);
+      }
+      .btn-primary {
+        background-color: #ff8c00;
+        border-color: #ff8c00;
+      }
+      .btn-primary:hover {
+        background-color: #e67300;
+        border-color: #e67300;
+      }
+      .form-label {
+        font-weight: bold;
+        color: #333;
+      }
+      .app-brand img {
+        width: 120px;
+        height: auto;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Content -->
-
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-        <!-- Register Card -->
-        <div class="card">
-              <div class="card-body">
-                <!-- Logo -->
-                <div class="app-brand justify-content-center">
-                  <a href="index.html" class="app-brand-link gap-2">
-                    <img src="{% static 'assets/img/logo.jpeg' %}" width="120px" height = "80px">                    
-                  </a>
-                </div>
-                <!-- /Logo -->
-                <h4 class="mb-2">Adventure starts here 🚀</h4>
-                <p class="mb-4">Make your app management easy and fun!</p>
-            
-                <form id="formAuthentication" class="mb-3" method="POST">
-                  {% csrf_token %}
-                  <div class="mb-3">
-                    <label for="firstname" class="form-label">First Name</label>
-                    {{form.first_name}}
-                    {% comment %} <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      name="username"
-                      placeholder="Enter your username"
-                      autofocus
-                    /> {% endcomment %}
-                  </div>
-                  <div class="mb-3">
-                    <label for="lastname" class="form-label">Last Name</label>
-                    {{form.last_name}}
-                    {% comment %} <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      name="username"
-                      placeholder="Enter your username"
-                      autofocus
-                    /> {% endcomment %}
-                  </div>
-                  <div class="mb-3">
-                    <label for="mobile" class="form-label">Mobile</label>
-                    {% comment %} <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" /> {% endcomment %}
-                    {{form.country_code}}
-                    {{form.mobile}}
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    {% comment %} <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" /> {% endcomment %}
-                    {{form.email}}
-                  </div>
-                  <div class="mb-3 form-password-toggle">
-                    <label class="form-label" for="password">Password</label>
-                    <div class="input-group input-group-merge">
-                      {% comment %} <input
-                        type="password"
-                        id="password"
-                        class="form-control"
-                        name="password"
-                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                        aria-describedby="password"
-                      /> {% endcomment %}
-                      {{form.password1}}
-                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                    </div>
-                  </div>
-
-                  <div class="mb-3 form-password-toggle">
-                    <label class="form-label" for="password">Confirm Password</label>
-                    <div class="input-group input-group-merge">
-                      {% comment %} <input
-                        type="password"
-                        id="password"
-                        class="form-control"
-                        name="password"
-                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                        aria-describedby="password"
-                      /> {% endcomment %}
-                      {{form.password2}}
-                      <span class="input-group-text cursor-pointer"></span>
-                    </div>
-                  </div>
-                  <div class="mb-3 form-password-toggle">
-                    <label class="form-label" for="password">{{form.captcha.lebel}}</label>
-                    <div class="input-group input-group-merge">
-                      {{form.captcha}}
-                      <span class="input-group-text cursor-pointer"></span>
-                    </div>
-                  </div>
-              
-                  <div class="mb-3">
-                    <div class="form-check">
-                      {% comment %} <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" /> {% endcomment %}
-                      {{form.terms_and_condition}}
-                      <label class="form-check-label" for="terms-conditions">
-                        I agree to
-                        <a href="javascript:void(0);">privacy policy & terms</a>
-                      </label>
-                    </div>
-                  </div>
-                  <button class="btn btn-primary d-grid w-100">Sign up</button>
-                </form>
-            
-                <p class="text-center">
-                  <span>Already have an account?</span>
-                  <a href="{% url 'login' %}">
-                    <span>Sign in instead</span>
-                  </a>
-                </p>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card p-4">
+            <div class="text-center mb-4">
+              <div class="app-brand">
+                <a href="/">
+                  <img src="{% static 'assets/img/mighty.png' %}" alt="Logo">
+                </a>
               </div>
+              <h4 class="mt-3">Join Us 🚀</h4>
+              <p class="text-muted">Create your account to get started</p>
             </div>
-            <!-- Register Card -->
+
+            <form method="POST" id="register_form" action="{% url 'base:register' %}" data-url="{% url 'base:register' %}">
+              {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                {{ form.first_name }}
+                <div class="text-danger" id="first_name"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                {{ form.last_name }}
+                <div class="text-danger" id="last_name"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Mobile</label>
+                {{ form.country_code }}
+                {{ form.mobile }}
+                <span id="error-msg" class="text-danger hide"></span>
+                <span id="valid-msg" class="text-success hide">✓ Valid</span>
+                <div class="text-danger" id="mobile"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                {{ form.email }}
+                <div class="text-danger" id="email"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                {{ form.password1 }}
+                <div class="text-danger" id="password1"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                {{ form.password2 }}
+                <div class="text-danger" id="password2"></div>
+              </div>
+
+              <div class="mb-3 form-check">
+                {{ form.terms_and_condition }}
+                <label class="form-check-label" for="terms_and_condition">
+                  I agree to the <a href="#">terms & privacy policy</a>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100" id="register_btn"><a href="{% url 'base:register' %}">Sign Up</a></button>
+            </form>
+
+            <div class="text-center mt-3">
+              <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- / Content -->
-
-    {% include 'base/js.html' %}
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'assets/extra-libs/countrycode/js/intlTelInput.js' %}"></script>
-    
+    <script src="{% static 'assets/extra-libs/countrycode/js/utils.js' %}"></script>
+
     <script>
-      function checkempty() {
-        var $nonempty = $('#error-msg').filter(function () {
-          return $(this).text() == ''
-        });
-        if ($nonempty.length > 0) { // if empty spans available
-          $('#register_btn').prop("disabled", false); // disable button
-        } else {
-          $('#register_btn').prop("disabled", true); // otherwise enable it
-        }
+      const input = document.querySelector("#id_mobile");
+      const addressDropdown = document.querySelector("#id_country_code");
+      const errorMsg = document.querySelector("#error-msg");
+      const validMsg = document.querySelector("#valid-msg");
+
+      const iti = window.intlTelInput(input, {
+        utilsScript: "{% static 'assets/extra-libs/countrycode/js/utils.js' %}"
+      });
+
+      function resetPhoneValidation() {
+        input.classList.remove("error");
+        errorMsg.classList.add("hide");
+        validMsg.classList.add("hide");
+        errorMsg.innerHTML = "";
       }
-    </script>
-  <script>
-    // get the country data from the plugin
-    var countryData = window.intlTelInputGlobals.getCountryData(),
-      input = document.querySelector("#id_mobile"),
-      addressDropdown = document.querySelector("#id_country_code"),
-      errorMsg = document.querySelector("#error-msg"),
-      validMsg = document.querySelector("#valid-msg");
 
-    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-
-    var iti = window.intlTelInput(input, {
-      utilsScript: "{% static 'assets/extra-libs/countrycode/js/utils.js' %}",
-    });
-
-    var reset = function () {
-      input.classList.remove("error");
-      errorMsg.innerHTML = "";
-      errorMsg.classList.add("hide");
-      validMsg.classList.add("hide");
-    };
-
-    input.addEventListener('blur', function () {
-      reset();
-      if (input.value.trim()) {
-        if (iti.isValidNumber()) {
-          validMsg.classList.remove("hide");
-        } else {
-          input.classList.add("error");
-          var errorCode = iti.getValidationError();
-          errorMsg.innerHTML = errorMap[errorCode];
-          errorMsg.classList.remove("hide");
-        }
-      }
-      checkempty();
-    });
-
-    // populate the country dropdown
-    for (var i = 0; i < countryData.length; i++) {
-      var country = countryData[i];
-      var optionNode = document.createElement("option");
-      optionNode.value = country.dialCode;
-      var textNode = document.createTextNode(country.dialCode);
-      optionNode.appendChild(textNode);
-      addressDropdown.appendChild(optionNode);
-    }
-    // set it's initial value
-    addressDropdown.value = iti.getSelectedCountryData().dialCode;
-
-    // listen to the telephone input for changes
-    input.addEventListener('countrychange', function (e) {
-      addressDropdown.value = iti.getSelectedCountryData().dialCode;
-    });
-
-    // listen to the address dropdown for changes
-    addressDropdown.addEventListener('change', function () {
-      iti.setCountry(this.value);
-    });
-    $("#id_mobile").attr("placeholder", "Phone No..")
-    input.addEventListener('change', reset);
-    input.addEventListener('keyup', reset);
-
-  </script>
-  <script>
-    $(".preloader ").fadeOut();
-  </script>
-  <script>
-    $(document).ready(function () {
-      $('#register').on('submit', function () {
-        var form = $(this);
-        $.ajax({
-          url: form.attr('data-url'),
-          data: form.serialize(),
-          type: form.attr('method'),
-          dataType: 'json',
-          success: function (data) {
-            location.replace('{% url "base:otp_verify" %}')
-          },
-          error: function (data) {
-            $("#password2").text(data.responseJSON.password2)
-            $("#first_name").text(data.responseJSON.first_name)
-            $("#last_name").text(data.responseJSON.last_name)
-            $("#mobile").text(data.responseJSON.mobile)
-            $("#email").text(data.responseJSON.email)
-            $("#password1").text(data.responseJSON.password1)
-
+      input.addEventListener('blur', function () {
+        resetPhoneValidation();
+        if (input.value.trim()) {
+          if (iti.isValidNumber()) {
+            validMsg.classList.remove("hide");
+          } else {
+            input.classList.add("error");
+            const errorCode = iti.getValidationError();
+            const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+            errorMsg.innerHTML = errorMap[errorCode];
+            errorMsg.classList.remove("hide");
           }
-        })
-        return false;
-      })
-    })
-  </script>
+        }
+      });
+
+      const countryData = window.intlTelInputGlobals.getCountryData();
+      for (let i = 0; i < countryData.length; i++) {
+        const option = document.createElement("option");
+        option.value = countryData[i].dialCode;
+        option.text = countryData[i].dialCode;
+        addressDropdown.appendChild(option);
+      }
+
+      addressDropdown.value = iti.getSelectedCountryData().dialCode;
+
+      input.addEventListener('countrychange', function () {
+        addressDropdown.value = iti.getSelectedCountryData().dialCode;
+      });
+
+      addressDropdown.addEventListener('change', function () {
+        iti.setCountry(this.value);
+      });
+
+      input.addEventListener('change', resetPhoneValidation);
+      input.addEventListener('keyup', resetPhoneValidation);
+      $("#id_mobile").attr("placeholder", "Phone No..");
+
+      // Form Submission with AJAX
+      $(document).ready(function () {
+        $('#register_form').on('submit', function (e) {
+          e.preventDefault();
+          let form = $(this);
+
+          $.ajax({
+            url: form.attr('data-url'),
+            data: form.serialize(),
+            type: form.attr('method'),
+            dataType: 'json',
+            success: function (data) {
+              location.replace("{% url 'base:otp_verify' %}");
+            },
+            error: function (data) {
+              const errors = data.responseJSON;
+              $("#password2").text(errors.password2 || "");
+              $("#first_name").text(errors.first_name || "");
+              $("#last_name").text(errors.last_name || "");
+              $("#mobile").text(errors.mobile || "");
+              $("#email").text(errors.email || "");
+              $("#password1").text(errors.password1 || "");
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

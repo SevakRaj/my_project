@@ -1,0 +1,3 @@
+{% if user.role != "SUPER_ADMIN" %}
+<div>You have no permission to access this page. <a href="{{ request.session.previous_page }}">Go back</a></div>
+{% endif %}
