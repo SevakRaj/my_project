@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Users{% endblock %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block next_page %}
+<li class="breadcrumb-item text-muted active" aria-current="page"><a
+    href="{% url 'customers:dashboard' %}">Users</a> / Edit
+{% endblock %}
+
+{% block head %}
+Users
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+      <!-- Order Statistics -->
+      <div class="col-md-6 col-lg-4 col-xl-6 order-0 mb-2">
+        <div class="card h-100">
+            <div class="card-header">
+              <h5>Edit customer</h5>
+            </div>
+            <div class="row">
+              <div class="ms-4 mb-4 col-6">
+                <form method="post" enctype="multipart/form-data" action="{% url 'users:edit-users' edit_user.id %}">
+                  {% csrf_token %}
+                  {{form}}
+                  <button class="btn btn-success mt-5 " type="submit" style="float:right">Edit</button>
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Content -->
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/jquery.form.js'%}"></script>
+<script>
+  $('#user-menu').addClass('active open');
+  $('#create-user').addClass('active')
+</script>
+<script>
+  
+</script>
+{% endblock js %}

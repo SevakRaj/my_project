@@ -15,5 +15,12 @@ class User(AbstractUser):
     otp_created_at = models.DateTimeField(blank=True, null=True)
     is_deactivated = models.BooleanField(default=False)
     objects = UserManager()
+    
+    def save(self, *args, **kwargs):
+        # Automatically set name as "First Last"
+        if self.first_name or self.last_name:
+            self.name = f"{self.first_name} {self.last_name}".strip()
+        super(User, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name

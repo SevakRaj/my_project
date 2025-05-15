@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
      # Project applications
     'user.apps.UserConfig',
     'base.apps.BaseConfig',
@@ -127,7 +127,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# ✅ Required to use collectstatic
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # For media uploads

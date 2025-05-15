@@ -16,7 +16,9 @@ class Dashboard(View):
 
     def get(self, request):
         if not request.user.is_anonymous:
-            return render(request, self.template_name)  # Show static dashboard
+            user = User.objects.count()
+            context = {'active_users': user}
+            return render(request, self.template_name, context)
         return redirect("base:login")
     
 class Login(View):
@@ -84,10 +86,10 @@ class UserRegister(FormView):
     template_name = "base/register.html"
 
     def form_invalid(self, form):
-        response = super(UserRegister, self).form_invalid(form)
-        if self.request.is_ajax():
-            data = form.errors
-            return JsonResponse(data, status=400)
+        response = super().form_invalid(form)
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse(form.errors, status=400)
+        return response
 
     def form_valid(self, form):
         form_data = form.cleaned_data
